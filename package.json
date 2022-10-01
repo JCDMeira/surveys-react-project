@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/JCDMeira/surveys-react-project/issues"
   },
-  "homepage": "https://github.com/JCDMeira/surveys-react-project#readme"
+  "homepage": "https://github.com/JCDMeira/surveys-react-project#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^4.2.1"
+  }
 }
