@@ -14,7 +14,7 @@
   },
   "plugins": ["react", "cypress"],
   "parserOptions": {
-    "project": "./tsconfig-eslint.json"
+    "project": ["tsconfig.json"]
   },
   "rules": {
     "@typescript-eslint/consistent-type-definitions": "off",
@@ -28,6 +28,8 @@
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "semi": "off",
-    "comma-dangle": "off"
+    "comma-dangle": "off",
+    "@typescript-eslint/member-delimiter-style": "off",
+    "space-before-function-paren": "off"
   }
 }
