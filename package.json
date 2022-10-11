@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --passWithNoTests",
-    "test:watch": "npm test -- --watch",
-    "test:staged": "npm test -- --findRelatedTests",
-    "test:ci": "npm test -- --coverage",
+    "test:watch": "npm test --watch",
+    "test:staged": "npm test --findRelatedTests",
+    "test:ci": "npm test --coverage",
     "lint": "eslint --max-warnings=0 ."
   },
   "repository": {
