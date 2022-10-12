@@ -8,7 +8,8 @@
     "test:watch": "npm test --watch",
     "test:staged": "npm test --findRelatedTests",
     "test:ci": "npm test --coverage",
-    "lint": "eslint --max-warnings=0 ."
+    "lint": "eslint --max-warnings=0 .",
+    "test:lint": "npm run test:staged && npm run lint"
   },
   "repository": {
     "type": "git",
