@@ -16,12 +16,12 @@ export class RemoteAuthentication {
       body: params,
     });
     switch (httpResponse.statuesCode) {
+      case HttpStatusCode.ok:
+        break;
       case HttpStatusCode.unathorarized:
         throw new InvalidCredentialsError();
-      case HttpStatusCode.badRequest:
-        throw new UnexpectedError();
       default:
-        return Promise.resolve();
+        throw new UnexpectedError();
     }
   }
 }
