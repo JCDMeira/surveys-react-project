@@ -30,6 +30,7 @@
     "semi": "off",
     "comma-dangle": "off",
     "@typescript-eslint/member-delimiter-style": "off",
-    "space-before-function-paren": "off"
+    "space-before-function-paren": "off",
+    "@typescript-eslint/indent": "off"
   }
 }
