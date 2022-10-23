@@ -4,8 +4,11 @@ import { HttpPostClientSpy } from '@/data/test/mock-http-client';
 import { RemoteAuthentication } from './remote-authentication';
 import { InvalidCredentialsError } from '@/domain/errors/Invalid-credentials-erro';
 import { AuthenticationParams } from '@/domain/usecases/authentication';
-import { mockAuthentication } from '@/domain/test/mock-authentication';
 import { UnexpectedError } from '@/domain/errors/unexpected-error';
+import {
+  mockAccountModel,
+  mockAuthentication,
+} from '@/domain/test/mock-account';
 import { AccontModel } from '@/domain/models/account-model';
 
 type SutTypes = {
@@ -69,5 +72,15 @@ describe('RemoteAuthentication', () => {
     };
     const promise = sut.auth(mockAuthentication());
     await expect(promise).rejects.toThrow(new UnexpectedError());
+  });
+  test('Should returns AccountModel if HttpPostClient returns 200', async () => {
+    const { sut, httpPostClientSpy } = makeSut();
+    const httpRseult = mockAccountModel();
+    httpPostClientSpy.response = {
+      statuesCode: HttpStatusCode.ok,
+      body: httpRseult,
+    };
+    const account = await sut.auth(mockAuthentication());
+    expect(account).toEqual(httpRseult);
   });
 });
