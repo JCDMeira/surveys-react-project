@@ -6,7 +6,9 @@ module.exports = {
   transform: {
     '.+\\.ts$': 'ts-jest',
   },
+  transformIgnorePatterns: ['node_modules/(?!axios)'],
   moduleNameMapper: {
     '@/(.*)': '<rootDir>/src/$1',
+    '^axios$': require.resolve('axios'),
   },
 };
