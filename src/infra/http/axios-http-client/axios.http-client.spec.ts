@@ -7,7 +7,7 @@ jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 const mockedAxiosResult = {
   data: faker.random.objectElement(),
-  status: faker.random.number(),
+  status: faker.datatype.number(),
 };
 mockedAxios.post.mockResolvedValue(mockedAxiosResult);
 
@@ -33,6 +33,13 @@ describe('AxiosHttpClient', () => {
   test('should return the correct statusCode and body', async () => {
     const sut = makeSut();
     const httpResponse = await sut.post(mockPostRequest());
+    console.log({
+      httpResponse,
+      mocked: {
+        statusCode: mockedAxiosResult.status,
+        body: mockedAxiosResult.data,
+      },
+    });
     expect(httpResponse).toEqual({
       statusCode: mockedAxiosResult.status,
       body: mockedAxiosResult.data,
