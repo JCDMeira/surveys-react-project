@@ -40,7 +40,7 @@ describe('RemoteAuthentication', () => {
   test('Should throw UnexpectedError if HttpPostClient returns 400', async () => {
     const { sut, httpPostClientSpy } = makeSut();
     httpPostClientSpy.response = {
-      statuesCode: HttpStatusCode.badRequest,
+      statusCode: HttpStatusCode.badRequest,
     };
     const promise = sut.auth(mockAuthentication());
     await expect(promise).rejects.toThrow(new UnexpectedError());
@@ -48,7 +48,7 @@ describe('RemoteAuthentication', () => {
   test('Should throw InvalidCredentialsError if HttpPostClient returns 401', async () => {
     const { sut, httpPostClientSpy } = makeSut();
     httpPostClientSpy.response = {
-      statuesCode: HttpStatusCode.unauthorarized,
+      statusCode: HttpStatusCode.unauthorarized,
     };
     const promise = sut.auth(mockAuthentication());
     await expect(promise).rejects.toThrow(new InvalidCredentialsError());
@@ -56,7 +56,7 @@ describe('RemoteAuthentication', () => {
   test('Should throw UnexpectedError if HttpPostClient returns 404', async () => {
     const { sut, httpPostClientSpy } = makeSut();
     httpPostClientSpy.response = {
-      statuesCode: HttpStatusCode.notFound,
+      statusCode: HttpStatusCode.notFound,
     };
     const promise = sut.auth(mockAuthentication());
     await expect(promise).rejects.toThrow(new UnexpectedError());
@@ -64,7 +64,7 @@ describe('RemoteAuthentication', () => {
   test('Should throw UnexpectedError if HttpPostClient returns 500', async () => {
     const { sut, httpPostClientSpy } = makeSut();
     httpPostClientSpy.response = {
-      statuesCode: HttpStatusCode.severError,
+      statusCode: HttpStatusCode.severError,
     };
     const promise = sut.auth(mockAuthentication());
     await expect(promise).rejects.toThrow(new UnexpectedError());
@@ -73,7 +73,7 @@ describe('RemoteAuthentication', () => {
     const { sut, httpPostClientSpy } = makeSut();
     const httpRseult = mockAccountModel();
     httpPostClientSpy.response = {
-      statuesCode: HttpStatusCode.ok,
+      statusCode: HttpStatusCode.ok,
       body: httpRseult,
     };
     const account = await sut.auth(mockAuthentication());

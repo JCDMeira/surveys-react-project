@@ -17,7 +17,7 @@ export class RemoteAuthentication implements Authentication {
       url: this.url,
       body: params,
     });
-    switch (httpResponse.statuesCode) {
+    switch (httpResponse.statusCode) {
       case HttpStatusCode.ok:
         return httpResponse.body;
       case HttpStatusCode.unauthorarized:
