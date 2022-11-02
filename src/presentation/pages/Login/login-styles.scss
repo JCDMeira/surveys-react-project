@@ -91,13 +91,26 @@ button {
       }
       .status {
         position: absolute;
-        right: 4px;
+        right: 8px;
         font-size: 12px;
+        cursor: help;
       }
     }
 
-    button {
+    .submit {
       margin-top: 16px;
+    }
+
+    .link {
+      text-align: center;
+      color: $primary;
+      text-transform: lowercase;
+      margin-top: 16px;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   .footer {

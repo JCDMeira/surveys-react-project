@@ -26,7 +26,14 @@ const Login: React.FC = () => {
           />
           <span className={Styles.status}>🔴</span>
         </div>
-        <button type="submit">Entrar</button>
+        <button type="submit" className={Styles.submit}>
+          Entrar
+        </button>
+        <span className={Styles.link}>Criar conta</span>
+
+        <div className={Styles.errorWrap}>
+          <span className={Styles.error}>erro</span>
+        </div>
       </form>
       <footer className={Styles.footer} />
     </div>
