@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import Logo from '../Logo';
+import { Logo } from '@/presentation/components/';
 
 import Styles from './styles.scss';
 
