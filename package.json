@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/JCDMeira/surveys-react-project#readme",
   "devDependencies": {
+    "@testing-library/react": "^13.4.0",
     "@types/axios": "^0.14.0",
     "@types/faker": "^6.6.9",
     "@types/jest": "^25.2.1",
