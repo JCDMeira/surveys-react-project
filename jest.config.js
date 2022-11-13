@@ -10,6 +10,7 @@ module.exports = {
   moduleNameMapper: {
     '@/(.*)': '<rootDir>/src/$1',
     '^axios$': require.resolve('axios'),
-    '\\.scss$': 'indentity-obj-proxy',
+    '.+\\.(css|styl|less|sass|scss|png|jpg|svg|ttf|woff|woff2)$':
+      '<rootDir>/src/__mock__/mock.ts',
   },
 };
