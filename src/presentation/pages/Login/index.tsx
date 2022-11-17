@@ -11,12 +11,16 @@ import FormContext from '@/presentation/contexts/Form/form-context';
 type LoginStateType = {
   isLoading: boolean;
   errorMessage: string;
+  emailError: string;
+  passwordError: string;
 };
 
 const Login: React.FC = () => {
   const [loginState] = useState<LoginStateType>({
     isLoading: false,
     errorMessage: '',
+    emailError: 'Campo obrigatório',
+    passwordError: 'Campo obrigatório',
   });
 
   return (
@@ -25,8 +29,12 @@ const Login: React.FC = () => {
       <FormContext.Provider value={loginState}>
         <form action="#" className={Styles.form}>
           <h2>Login</h2>
-          <Input type="email" placeholder="Digite seu e-mail" />
-          <Input type="password" placeholder="Digite sua senha" />
+          <Input type="email" name="email" placeholder="Digite seu e-mail" />
+          <Input
+            type="password"
+            name="password"
+            placeholder="Digite sua senha"
+          />
 
           <button
             data-testid="submit"
