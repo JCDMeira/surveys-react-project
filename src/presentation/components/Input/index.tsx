@@ -34,8 +34,13 @@ type InputProps = {
 };
 
 const Input: React.FC<InputProps> = ({ type, placeholder, name }) => {
-  const value = useContext(FormContext);
-  const error = value[`${name}Error`];
+  const { loginState, setLoginState } = useContext(FormContext);
+  const error = loginState[`${name}Error`];
+
+  const handleChange = (event: React.SyntheticEvent<EventTarget>): void => {
+    const { name, value } = event.target as HTMLButtonElement;
+    setLoginState({ ...loginState, [name]: value });
+  };
 
   const getStatus = (): string => {
     return '🔴';
@@ -47,7 +52,13 @@ const Input: React.FC<InputProps> = ({ type, placeholder, name }) => {
 
   return (
     <div className={Styles['input-wrap']}>
-      <input type={type} name={type} placeholder={placeholder} />
+      <input
+        data-testid={name}
+        type={type}
+        name={type}
+        placeholder={placeholder}
+        onChange={handleChange}
+      />
       <span
         data-testid={`${name}-status`}
         title={getTitle()}
