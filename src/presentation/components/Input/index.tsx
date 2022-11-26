@@ -43,11 +43,11 @@ const Input: React.FC<InputProps> = ({ type, placeholder, name }) => {
   };
 
   const getStatus = (): string => {
-    return '🔴';
+    return error ? '🔴' : '🟢';
   };
 
   const getTitle = (): string => {
-    return error;
+    return error || 'Tudo certo';
   };
 
   return (
