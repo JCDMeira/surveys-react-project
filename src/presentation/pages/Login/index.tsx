@@ -46,7 +46,13 @@ const Login: React.FC<LoginProps> = ({ validation, authentication }) => {
     event: React.FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     event.preventDefault();
-    if (loginState.isLoading) return;
+    if (
+      loginState.isLoading ||
+      !!loginState.emailError ||
+      !!loginState.passwordError
+    ) {
+      return;
+    }
     setLoginState({ ...loginState, isLoading: true });
     await authentication.auth({
       email: loginState.email,
@@ -58,7 +64,12 @@ const Login: React.FC<LoginProps> = ({ validation, authentication }) => {
     <div className={Styles.login}>
       <LoginHeader />
       <FormContext.Provider value={{ loginState, setLoginState }}>
-        <form action="#" className={Styles.form} onSubmit={handleSubmit}>
+        <form
+          data-testid="form"
+          action="#"
+          className={Styles.form}
+          onSubmit={handleSubmit}
+        >
           <h2>Login</h2>
           <Input type="email" name="email" placeholder="Digite seu e-mail" />
           <Input
