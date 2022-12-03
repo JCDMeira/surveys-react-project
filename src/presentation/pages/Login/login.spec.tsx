@@ -158,4 +158,14 @@ describe('Login component', () => {
 
     expect(autenticationSpy.callsCount).toBe(1);
   });
+
+  test('should not call autentication if form is invalid', () => {
+    const validationError = faker.random.words();
+    const { sut, autenticationSpy } = makeSut({ validationError });
+    populateEmailField(sut);
+
+    fireEvent.submit(sut.getByTestId('form'));
+
+    expect(autenticationSpy.callsCount).toBe(0);
+  });
 });
